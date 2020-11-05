@@ -118,7 +118,7 @@ export class FolderViewComponent implements OnInit {
     }
 
     filesSelected($event) {
-        event.preventDefault();
+        $event.preventDefault();
         this.fileSB.upload(Array.from(this.fileInput.nativeElement.files), this.path);
         this.fileSB.startLoadingFolderInformation(this.path);
     }

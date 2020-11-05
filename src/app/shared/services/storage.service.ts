@@ -17,7 +17,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType, HttpHeaders } from '@angular/common/http';
 import * as FileSaver from 'file-saver';
 import * as mime from 'mime';
 
@@ -129,12 +129,43 @@ export class StorageService {
                             .post(
                                 FILES_UPLOAD_BASE_API_URL,
                                 formData,
-                                AppSandboxService.getPrivateKeyPlaceholder()
+                                // AppSandboxService.getPrivateKeyPlaceholder(),
+                                {
+                                    headers: AppSandboxService.getPrivateKeyPlaceholder().headers,
+                                    reportProgress: true,
+                                    observe: 'events'
+                                }
                             )
-                            .subscribe(response => {
-                                // TODO?
-                                callback(response);
+                            .subscribe((event: HttpEvent<any>) => {
+                                console.log('event: ', event);
+                                switch (event.type) {
+                                    case HttpEventType.Sent:
+                                        console.log('Request has been made!');
+                                        break;
+                                    case HttpEventType.ResponseHeader:
+                                        console.log('Response header has been received!');
+                                        break;
+                                    case HttpEventType.UploadProgress:
+                                        console.log(
+                                            `Uploaded! ${Math.round(
+                                                (event.loaded / event.total) * 100
+                                            )}`
+                                        );
+                                        break;
+                                    case HttpEventType.Response:
+                                        console.log('User successfully created!', event.body);
+                                        callback(event.body);
+                                        break;
+                                    // setTimeout(() => {
+                                    //     this.progress = 0;
+                                    // }, 1500);
+                                }
                             });
+                        // .subscribe(response => {
+                        //     // TODO?
+                        //     console.log('response from uploading file: ', response);
+                        //     callback(response);
+                        // });
                     }
                 });
             }
