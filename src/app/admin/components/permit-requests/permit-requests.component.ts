@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RecordPermissionRequest } from '../../models/record_permission.model';
 import { replaceInArray } from '../../../shared/services/axios';
 import { HttpClient } from '@angular/common/http';
+import { RecordPermissionRequest } from 'src/app/recordmanagement/models/record_permission.model';
 
 @Component({
-  selector: 'app-records-permit-requests',
-  templateUrl: './records-permit-requests.component.html',
+  templateUrl: './permit-requests.component.html',
 })
 export class RecordsPermitRequestsComponent implements OnInit {
   constructor(private http: HttpClient) {}

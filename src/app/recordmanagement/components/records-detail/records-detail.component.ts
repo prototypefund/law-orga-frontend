@@ -23,8 +23,8 @@ interface Field {
 }
 
 @Component({
-  selector: 'app-record',
-  templateUrl: './record.component.html',
+  selector: 'records-detail',
+  templateUrl: './records-detail.component.html',
 })
 export class RecordComponent implements OnInit {
   id: string;

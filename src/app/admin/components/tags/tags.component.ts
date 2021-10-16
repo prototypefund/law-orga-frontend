@@ -1,12 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Tag } from 'src/app/recordmanagement/models/tag.model';
 import { FormDialogComponent } from 'src/app/shared/components/form-dialog/form-dialog.component';
 import { addToArray, DjangoError, removeFromArray, replaceInArray } from 'src/app/shared/services/axios';
-import { Tag } from '../../models/tag.model';
 
 @Component({
-  selector: 'settings-page',
   templateUrl: './tags.component.html',
 })
 export class TagsComponent implements OnInit {

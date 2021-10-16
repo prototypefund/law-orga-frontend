@@ -3,7 +3,7 @@ import { AppSandboxService } from '../../services/app-sandbox.service';
 import { RestrictedGroup } from '../../models/group.model';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { AddGroupComponent } from '../../components/add-group/add-group.component';
+import { AddGroupComponent } from '../add-group/add-group.component';
 import { addToArray, removeFromArray } from '../../../shared/services/axios';
 import { SharedSandboxService } from 'src/app/shared/services/shared-sandbox.service';
 import { HttpClient } from '@angular/common/http';

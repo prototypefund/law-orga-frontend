@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
   {
@@ -21,6 +21,10 @@ const appRoutes: Routes = [
   {
     path: 'collab',
     loadChildren: () => import('./collab/collab.module').then((m) => m.CollabModule),
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
   },
 ];
 

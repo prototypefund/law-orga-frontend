@@ -17,6 +17,7 @@ import { CollabSandboxService } from './collab/services/collab-sandbox.service';
 import { MaterialModule } from './material/material.module';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
+import { AdminModule } from './admin/admin.module';
 
 Quill.register('modules/cursors', QuillCursors);
 
@@ -30,6 +31,7 @@ Quill.register('modules/cursors', QuillCursors);
     AuthModule,
     CoreModule,
     SharedModule,
+    AdminModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({

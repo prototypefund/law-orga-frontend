@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { replaceInArray } from '../../../shared/services/axios';
-import { RecordDeletionRequest } from '../../models/record_deletion_request.model';
+import { RecordDeletionRequest } from '../../../recordmanagement/models/record_deletion_request.model';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-records-deletion-requests',
-  templateUrl: './records-deletion-requests.component.html',
+  templateUrl: './deletion-requests.component.html',
 })
 export class RecordsDeletionRequestsComponent implements OnInit {
   constructor(private http: HttpClient) {}
