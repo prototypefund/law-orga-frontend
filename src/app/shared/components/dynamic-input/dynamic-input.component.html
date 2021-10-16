@@ -19,6 +19,7 @@
     <!-- select -->
     <ng-container *ngIf="tag === 'select'">
         <mat-select [required]="required" [formControl]="control">
+            <mat-option *ngIf="!required" value>-----</mat-option>
             <mat-option *ngFor="let option of options" [value]="option.id">
                 {{ option.name }}
             </mat-option>

@@ -201,7 +201,7 @@ export class RecordComponent implements OnInit {
       label: 'Origin Country',
       tag: 'select',
       name: 'origin_country',
-      required: true,
+      required: false,
       options: [],
     },
     {
