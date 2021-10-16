@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from '../../models/user.model';
 import { AppSandboxService } from '../../services/app-sandbox.service';
-import { GetProfilesDetailApiUrl, GetProfilesUnlockApiUrl, PROFILES_API_URL } from '../../../statics/api_urls.statics';
+import { GetProfilesDetailApiUrl, GetProfilesUnlockApiUrl } from '../../../statics/api_urls.statics';
 import { SharedSandboxService } from '../../../shared/services/shared-sandbox.service';
 import { removeFromArray } from '../../../shared/services/axios';
 import { HttpClient } from '@angular/common/http';

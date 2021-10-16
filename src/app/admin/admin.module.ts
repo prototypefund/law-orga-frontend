@@ -6,6 +6,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { RecordsDeletionRequestsComponent } from './components/deletion-requests/deletion-requests.component';
 import { RecordsPermitRequestsComponent } from './components/permit-requests/permit-requests.component';
 import { QuestionnairesCreateComponent } from './components/questionnaires-create/questionnaires-create.component';
+import { QuestionnairesUpdateComponent } from './components/questionnaires-update/questionnaires-update.component';
 import { QuestionnairesComponent } from './components/questionnaires/questionnaires.component';
 import { TagsComponent } from './components/tags/tags.component';
 
@@ -18,6 +19,7 @@ import { TagsComponent } from './components/tags/tags.component';
     TagsComponent,
     QuestionnairesComponent,
     QuestionnairesCreateComponent,
+    QuestionnairesUpdateComponent,
   ],
 })
 export class AdminModule {}

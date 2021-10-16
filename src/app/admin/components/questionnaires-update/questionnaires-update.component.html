@@ -1,0 +1,9 @@
+<div class="max-w-2xl mx-auto">
+    <div class="bg-white shadow px-5 py-4">
+        <div *ngIf="questionnaire">
+            <dynamic-form button="Save" [data]="questionnaire" [fields]="fields"
+                [url]="'api/records/questionnaires/' + questionnaire.id + '/'" (successful)="successful()">
+            </dynamic-form>
+        </div>
+    </div>
+</div>

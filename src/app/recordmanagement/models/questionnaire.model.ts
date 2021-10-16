@@ -1,4 +1,5 @@
 export interface Questionnaire {
+  id: number;
   rlc: number;
   name: string;
   note: string;

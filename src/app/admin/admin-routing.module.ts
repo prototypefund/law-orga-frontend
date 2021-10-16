@@ -6,6 +6,7 @@ import { RecordsDeletionRequestsComponent } from './components/deletion-requests
 import { RecordsPermitRequestsComponent } from './components/permit-requests/permit-requests.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { QuestionnairesCreateComponent } from './components/questionnaires-create/questionnaires-create.component';
+import { QuestionnairesUpdateComponent } from './components/questionnaires-update/questionnaires-update.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'questionnaires/create',
     component: QuestionnairesCreateComponent,
+  },
+  {
+    path: 'questionnaires/:id/update',
+    component: QuestionnairesUpdateComponent,
   },
   {
     path: 'tags',

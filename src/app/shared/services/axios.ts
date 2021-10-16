@@ -5,6 +5,7 @@ import { IFile } from 'src/app/filemanagement/models/file.model';
 import { Folder } from 'src/app/filemanagement/models/folder.model';
 import { FolderPermission } from 'src/app/filemanagement/models/folder_permission.model';
 import { Message } from 'src/app/recordmanagement/models/message.model';
+import { Questionnaire } from 'src/app/recordmanagement/models/questionnaire.model';
 import { RecordDeletionRequest } from 'src/app/recordmanagement/models/record_deletion_request.model';
 import { RecordDocument } from 'src/app/recordmanagement/models/record_document.model';
 import { RecordPermissionRequest } from 'src/app/recordmanagement/models/record_permission.model';
@@ -34,7 +35,8 @@ export type DjangoModel =
   | IFile
   | Folder
   | FolderPermission
-  | Tag;
+  | Tag
+  | Questionnaire;
 
 export interface SubmitData {
   [key: string]: string | number;
