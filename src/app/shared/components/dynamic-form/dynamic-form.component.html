@@ -8,7 +8,7 @@
                 <div *ngFor="let field of fields">
                     <dynamic-input [name]="field.name" [tag]="field.tag" [label]="field.label" [type]="field.type"
                         [required]="field.required" [control]="controls[field.name]" [errors]="errors"
-                        [options]="field.options">
+                        [placeholder]="field.placeholder" [options]="field.options" [rows]="field.rows">
                     </dynamic-input>
                 </div>
             </div>

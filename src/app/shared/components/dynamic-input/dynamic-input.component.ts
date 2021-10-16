@@ -16,6 +16,8 @@ export interface DynamicField {
   tag: string;
   type?: string;
   value?: string | number;
+  rows?: number;
+  placeholder?: string;
   required?: boolean;
   options?: Array<{ id: number; name: string }>;
 }
@@ -29,6 +31,8 @@ export class DynamicInputComponent {
   @Input() tag: DynamicField['tag'];
   @Input() type: DynamicField['type'];
   @Input() value: DynamicField['value'];
+  @Input() placeholder: DynamicField['placeholder'];
+  @Input() rows: DynamicField['rows'];
   @Input() name: DynamicField['name'];
   @Input() required: DynamicField['required'];
   @Input() options: DynamicField['options'];

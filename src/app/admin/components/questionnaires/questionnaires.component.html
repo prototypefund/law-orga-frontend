@@ -11,29 +11,29 @@
                                     Questionnaire
                                 </th>
                                 <th scope="col" class="relative px-6 py-3 whitespace-nowrap text-sm text-right">
-                                    <button (click)="createQuestionnaire()" type="button"
+                                    <a routerLink="/admin/questionnaires/create"
                                         class="text-gray-600 hover:text-gray-900 font-medium bg-transparent">Add
-                                        Questionnaire</button>
+                                        Questionnaire</a>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let tag of tags" class="odd:bg-white even:bg-gray-50">
+                            <tr *ngFor="let item of questionnaires" class="odd:bg-white even:bg-gray-50">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                    {{ tag.name }}
+                                    {{ item.name }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm flex flex-row space-x-2 justify-end">
-                                    <button type="button" (click)="updateQuestionnaire(tag)"
+                                    <button type="button" (click)="updateQuestionnaire(item)"
                                         class="text-gray-600 hover:text-gray-900 font-medium bg-transparent">Edit</button>
-                                    <button type="button" (click)="deleteQuestionnaire(tag.id)"
+                                    <button type="button" (click)="deleteQuestionnaire(item.id)"
                                         class="text-gray-600 hover:text-gray-900 font-medium bg-transparent">Delete</button>
                                 </td>
                             </tr>
                             <tr class="odd:bg-white even:bg-gray-50">
                                 <td colspan="2" class="px-6 py-4 whitespace-nowrap text-sm">
-                                    <button (click)="createQuestionnaire()" type="button"
+                                    <a routerLink="/admin/questionnaires/create"
                                         class="text-gray-600 hover:text-gray-900 font-medium bg-transparent">Add
-                                        Questionnaire</button>
+                                        Questionnaire</a>
                                 </td>
                             </tr>
                         </tbody>

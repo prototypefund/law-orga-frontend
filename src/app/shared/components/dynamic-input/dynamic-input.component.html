@@ -8,7 +8,7 @@
     <!-- textarea -->
     <ng-container *ngIf="tag === 'textarea'">
         <textarea matInput [name]="name" [id]="name" [required]="required" [formControl]="control"
-            cdkTextareaAutosize></textarea>
+            [placeholder]="placeholder" cdkTextareaAutosize [rows]="rows"></textarea>
     </ng-container>
     <!-- file -->
     <ng-container *ngIf="tag === 'file'">
