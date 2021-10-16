@@ -8,3 +8,13 @@ export interface Questionnaire {
   updated: string;
   created: string;
 }
+
+export interface RecordQuestionnaire {
+  id: number;
+  record: number;
+  questionnaire: number;
+  answer: string;
+  answered: boolean;
+  created: string;
+  updated: string;
+}

@@ -1,56 +1,28 @@
-<!--
-  ~ law&orga - record and organization management software for refugee law clinics
-  ~ Copyright (C) 2019  Dominik Walser
-  ~
-  ~ This program is free software: you can redistribute it and/or modify
-  ~ it under the terms of the GNU Affero General Public License as
-  ~ published by the Free Software Foundation, either version 3 of the
-  ~ License, or (at your option) any later version.
-  ~
-  ~ This program is distributed in the hope that it will be useful,
-  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~ GNU Affero General Public License for more details.
-  ~
-  ~ You should have received a copy of the GNU Affero General Public License
-  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>
-  -->
-
-<!-- <div *ngIf="loading; else loaded" class="full_width record__progress-spinner-container">
-  <mat-spinner></mat-spinner>
-</div>
-<ng-template #loaded>
-  <app-full-record-detail *ngIf="type === 'FullRecord'"> </app-full-record-detail>
-  <app-restricted-record-detail *ngIf="type === 'RestrictedRecord'">
-  </app-restricted-record-detail>
-</ng-template> -->
+<div class="grid gap-6 lg:grid-cols-2">
 
 
-<div class="grid gap-8 lg:grid-cols-2">
-
-
-  <mat-card class="m-0">
-    <mat-card-title>Record</mat-card-title>
-    <mat-card-content>
+  <div class="bg-white shadow px-5 py-4 rounded">
+    <h2 class="mb-5 text-lg font-bold text-gray-800">Record</h2>
+    <div>
       <dynamic-form [fields]="recordFields" [errors]="recordErrors" [data]="record" (send)="onRecordSend($event)">
       </dynamic-form>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </div>
 
 
-  <div class="flex space-y-8 flex-col">
+  <div class="flex space-y-6 flex-col">
 
-    <mat-card class="m-0">
-      <mat-card-title>Client</mat-card-title>
-      <mat-card-content>
+    <div class="bg-white shadow px-5 py-4 rounded">
+      <h2 class="mb-5 text-lg font-bold text-gray-800">Client</h2>
+      <div>
         <dynamic-form [fields]="clientFields" [errors]="clientErrors" [data]="client" (send)="onClientSend($event)">
         </dynamic-form>
-      </mat-card-content>
-    </mat-card>
+      </div>
+    </div>
 
-    <mat-card class="m-0">
-      <mat-card-title>Files</mat-card-title>
-      <mat-card-content>
+    <div class="bg-white shadow px-5 py-4 rounded">
+      <h2 class="mb-5 text-lg font-bold text-gray-800">Files</h2>
+      <div>
         <mat-list>
           <mat-list-item *ngFor="let document of documents">
             <mat-icon mat-list-icon style="opacity: 0.54; margin-right: 6px;">attach_file</mat-icon>
@@ -65,12 +37,12 @@
             </dynamic-form>
           </mat-list-item>
         </mat-list>
-      </mat-card-content>
-    </mat-card>
+      </div>
+    </div>
 
-    <mat-card class="m-0">
-      <mat-card-title>Messages</mat-card-title>
-      <mat-card-content>
+    <div class="bg-white shadow px-5 py-4 rounded">
+      <h2 class="mb-5 text-lg font-bold text-gray-800">Messages</h2>
+      <div>
         <mat-list>
           <mat-list-item *ngFor="let message of messages">
             <mat-icon mat-list-icon style="opacity: 0.54; margin-right: 6px;">chat</mat-icon>
@@ -87,10 +59,22 @@
               (send)="onMessageSend($event)" [data]="messageData"></dynamic-form>
           </mat-list-item>
         </mat-list>
+      </div>
+    </div>
 
-      </mat-card-content>
-    </mat-card>
-
+    <div class="bg-white shadow px-5 py-4 rounded">
+      <div class="flex items-baseline justify-between">
+        <h2 class="text-lg font-bold text-gray-800">Questionnaires</h2>
+        <button mat-button color="primary" type="button" (click)="publishQuestionnaire()">
+          Publish a questionnaire
+        </button>
+      </div>
+      <div class="pt-5" *ngIf="recordQuestionnaires.length">
+        <ul>
+          <li *ngFor="let item of recordQuestionnaires">{{ item.id }}</li>
+        </ul>
+      </div>
+    </div>
 
   </div>
 

@@ -12,6 +12,9 @@ import { SharedSandboxService } from 'src/app/shared/services/shared-sandbox.ser
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import downloadFile from 'src/app/shared/other/download';
 import { Tag } from '../../models/tag.model';
+import { Questionnaire, RecordQuestionnaire } from '../../models/questionnaire.model';
+import { FormDialogComponent } from 'src/app/shared/components/form-dialog/form-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 interface Field {
   label: string;
@@ -28,6 +31,9 @@ interface Field {
 })
 export class RecordComponent implements OnInit {
   id: string;
+
+  questionnaires: Questionnaire[] = [];
+  recordQuestionnaires: RecordQuestionnaire[] = [];
 
   record: FullRecord;
   recordErrors: DjangoError;
@@ -248,7 +254,8 @@ export class RecordComponent implements OnInit {
     private sharedSB: SharedSandboxService,
     private route: ActivatedRoute,
     private appSB: AppSandboxService,
-    private http: HttpClient
+    private http: HttpClient,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -261,6 +268,10 @@ export class RecordComponent implements OnInit {
     this.http.get('api/records/tags/').subscribe((response: Tag[]) => (this.recordFields[6].options = response));
 
     this.http.get('api/records/origin_countries/').subscribe((response: OriginCountry[]) => (this.clientFields[2].options = response));
+
+    this.http
+      .get('api/records/record_questionnaires/')
+      .subscribe((response: RecordQuestionnaire[]) => (this.recordQuestionnaires = response));
 
     this.getRecord(this.id);
 
@@ -359,5 +370,39 @@ export class RecordComponent implements OnInit {
         }
       }
     );
+  }
+
+  publishQuestionnaire(): void {
+    this.http.get('api/records/questionnaires/').subscribe((response: Questionnaire[]) => {
+      this.questionnaires = response;
+
+      const data = {
+        title: 'Publish a questionnaire',
+        fields: [
+          {
+            label: 'Questionnaire',
+            name: 'questionnaire',
+            tag: 'select',
+            required: true,
+            options: this.questionnaires,
+          },
+        ],
+        submit: 'Publish',
+      };
+
+      const dialogRef = this.dialog.open(FormDialogComponent, {
+        data: data,
+      });
+
+      dialogRef.afterClosed().subscribe((result: { questionnaire: number }) => {
+        console.log(result);
+        if (result)
+          this.http
+            .post('api/records/questionnaires/publish/', { questionnaire: result.questionnaire, record: this.id })
+            .subscribe((response: RecordQuestionnaire) => {
+              this.recordQuestionnaires = addToArray(this.recordQuestionnaires, response) as RecordQuestionnaire[];
+            });
+      });
+    });
   }
 }
