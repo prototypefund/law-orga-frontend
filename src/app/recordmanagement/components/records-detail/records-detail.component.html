@@ -70,8 +70,34 @@
         </button>
       </div>
       <div class="pt-5" *ngIf="recordQuestionnaires.length">
-        <ul>
-          <li *ngFor="let item of recordQuestionnaires">{{ item.id }}</li>
+        <ul class="space-y-4">
+          <li class="block py-3 px-4 rounded bg-gray-100" *ngFor="let item of recordQuestionnaires">
+            <div class="flex items-baseline justify-between">
+              <h3 class="text-lg font-bold">{{ item.questionnaire.name }}</h3>
+              <div>
+                <button type="button" mat-button color="primary">Copy
+                  link</button>
+                <button type="button" mat-button color="warn"
+                  (click)="deleteRecordQuestionnaire(item.id)">Delete</button>
+              </div>
+            </div>
+            <div class="flex items-baseline space-x-5">
+              <div>
+                Published: {{ item.created|date:'d.M.Y' }}
+              </div>
+              <div>
+                Answered: {{ item.answered ? 'Yes' : 'No' }}
+              </div>
+              <div>
+                Link: {{ item.code }}
+              </div>
+            </div>
+            <hr class="my-3 border-gray-300">
+            <div *ngIf="item.answered">
+              {{ item.answer }}
+            </div>
+
+          </li>
         </ul>
       </div>
     </div>

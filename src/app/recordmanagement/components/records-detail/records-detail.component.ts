@@ -269,15 +269,19 @@ export class RecordComponent implements OnInit {
 
     this.http.get('api/records/origin_countries/').subscribe((response: OriginCountry[]) => (this.clientFields[2].options = response));
 
-    this.http
-      .get('api/records/record_questionnaires/')
-      .subscribe((response: RecordQuestionnaire[]) => (this.recordQuestionnaires = response));
+    this.getRecordQuestionnaires(this.id);
 
     this.getRecord(this.id);
 
     this.getMessages(this.id);
 
     this.getDocuments(this.id);
+  }
+
+  getRecordQuestionnaires(id: string | number): void {
+    this.http
+      .get(`api/records/records/${id}/record_questionnaires/`)
+      .subscribe((response: RecordQuestionnaire[]) => (this.recordQuestionnaires = response));
   }
 
   getMessages(id: string | number): void {
@@ -404,5 +408,11 @@ export class RecordComponent implements OnInit {
             });
       });
     });
+  }
+
+  deleteRecordQuestionnaire(id: number): void {
+    this.http
+      .delete(`api/records/record_questionnaires/${id}/`)
+      .subscribe(() => (this.recordQuestionnaires = removeFromArray(this.recordQuestionnaires, id) as RecordQuestionnaire[]));
   }
 }
