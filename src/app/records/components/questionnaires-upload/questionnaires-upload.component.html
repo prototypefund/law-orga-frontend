@@ -1,0 +1,12 @@
+<div class="max-w-2xl bg-white shadow px-5 py-4 rounded mx-auto">
+    <h2 class="text-xl font-bold">Enter the upload area</h2>
+    <p class="text-lg text-gray-700">
+        Please enter the code you have been given. If a questionnaire has the entered code you will be redirected to the
+        upload area.
+    </p>
+    <div class="pt-5">
+        <dynamic-form (successful)="redirect($event)" [fields]="fields" url="api/records/questionnaires/code/"
+            success="" button="Enter">
+        </dynamic-form>
+    </div>
+</div>

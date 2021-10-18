@@ -4,6 +4,8 @@ import { RecordsListComponent } from './components/records-list/records-list.com
 import { CreateRecordComponent } from './components/records-create/create-record.component';
 import { RecordComponent } from './components/records-detail/records-detail.component';
 import { RecordPoolComponent } from './components/records-pool/record-pool.component';
+import { QuestionnairesUploadComponent } from './components/questionnaires-upload/questionnaires-upload.component';
+import { QuestionnairesDetailComponent } from './components/questionnaires-detail/questionnaires-detail.component';
 
 const recordsRoutes: Routes = [
   {
@@ -17,6 +19,14 @@ const recordsRoutes: Routes = [
   {
     path: 'pool',
     component: RecordPoolComponent,
+  },
+  {
+    path: 'upload',
+    component: QuestionnairesUploadComponent,
+  },
+  {
+    path: 'upload/:code',
+    component: QuestionnairesDetailComponent,
   },
   {
     path: ':id',

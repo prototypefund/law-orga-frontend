@@ -15,6 +15,7 @@ import { Tag } from 'src/app/records/models/tag.model';
 export interface DjangoError {
   detail?: string;
   non_field_errors?: Array<string>;
+  // [key: string]: Array<string>;
 }
 
 // useful stuff

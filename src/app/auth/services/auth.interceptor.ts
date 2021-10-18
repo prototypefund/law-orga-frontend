@@ -68,7 +68,7 @@ export class AuthInterceptor implements HttpInterceptor {
               };
               reader.readAsText(error.error);
             } else {
-              this.appSB.showErrorSnackBar('Error');
+              this.appSB.showErrorSnackBar(`Error ${error.status}`);
             }
             // throw the error so that a form might be able to handle it accordingly
             throw error;

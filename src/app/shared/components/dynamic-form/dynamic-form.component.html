@@ -13,7 +13,9 @@
                 </div>
             </div>
             <div class="flex justify-between items-baseline">
-                <p [hidden]="!success" class="font-medium text-green-800 transition">{{ successText }}</p>
+                <div>
+                    <p [hidden]="!success" class="font-medium text-green-800 transition">{{ successText }}</p>
+                </div>
                 <button class="save-button" type="submit" mat-raised-button color="primary" [disabled]="processing">
                     <div class="pr-2" *ngIf="processing">
                         <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -33,5 +35,4 @@
 
         </form>
     </div>
-    <div *ngIf="errors" style="margin-top: 8px;">{{ errors | json }}</div>
 </div>

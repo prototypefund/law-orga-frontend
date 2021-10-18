@@ -2,7 +2,7 @@ import { Component, Input, EventEmitter, Output, OnInit, OnChanges, SimpleChange
 import { DynamicField } from '../dynamic-input/dynamic-input.component';
 import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { DjangoError, SubmitData } from '../../services/axios';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'dynamic-form',
@@ -35,10 +35,14 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.data && changes.data.currentValue && this.form) this.form.patchValue(changes.data.currentValue);
     if (changes.errors && changes.errors.currentValue) {
-      Object.keys(changes.errors.currentValue).forEach((key) => {
-        if (key in this.controls) this.controls[key].setErrors({ incorrect: true });
-      });
+      this.setErrors(changes.errors.currentValue);
     }
+  }
+
+  setErrors(errorDict: { [key: string]: number | string | boolean }): void {
+    Object.keys(errorDict).forEach((key) => {
+      if (key in this.controls) this.controls[key].setErrors({ incorrect: true });
+    });
   }
 
   onSubmit(): void {
@@ -50,13 +54,15 @@ export class DynamicFormComponent implements OnInit, OnChanges {
       this.http
         .request(this.data ? 'PATCH' : 'POST', this.url, { body: this.form.value as SubmitData })
         .subscribe({
-          next: () => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          next: (response: HttpResponse<any>) => {
             this.successText = this.success;
             setTimeout(() => (this.successText = null), 2000);
-            this.successful.emit();
+            this.successful.emit(response);
           },
           error: (error: HttpErrorResponse) => {
             this.errors = error.error as DjangoError;
+            this.setErrors(error.error);
           },
         })
         .add(() => (this.processing = false));
