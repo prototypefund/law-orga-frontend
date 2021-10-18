@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Questionnaire } from 'src/app/recordmanagement/models/questionnaire.model';
+import { Questionnaire } from 'src/app/records/models/questionnaire.model';
 
 @Component({
   templateUrl: './questionnaires-update.component.html',

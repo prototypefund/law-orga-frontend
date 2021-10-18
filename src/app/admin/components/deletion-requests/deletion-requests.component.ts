@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { replaceInArray } from '../../../shared/services/axios';
-import { RecordDeletionRequest } from '../../../recordmanagement/models/record_deletion_request.model';
+import { RecordDeletionRequest } from '../../../records/models/record_deletion_request.model';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

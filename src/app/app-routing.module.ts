@@ -12,7 +12,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'records',
-    loadChildren: () => import('./recordmanagement/records.module').then((m) => m.RecordsModule),
+    loadChildren: () => import('./records/records.module').then((m) => m.RecordsModule),
   },
   {
     path: 'files',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { replaceInArray } from '../../../shared/services/axios';
 import { HttpClient } from '@angular/common/http';
-import { RecordPermissionRequest } from 'src/app/recordmanagement/models/record_permission.model';
+import { RecordPermissionRequest } from 'src/app/records/models/record_permission.model';
 
 @Component({
   templateUrl: './permit-requests.component.html',

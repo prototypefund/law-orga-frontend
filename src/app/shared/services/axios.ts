@@ -4,12 +4,12 @@ import { IUser } from 'src/app/core/models/user.model';
 import { IFile } from 'src/app/filemanagement/models/file.model';
 import { Folder } from 'src/app/filemanagement/models/folder.model';
 import { FolderPermission } from 'src/app/filemanagement/models/folder_permission.model';
-import { Message } from 'src/app/recordmanagement/models/message.model';
-import { Questionnaire, RecordQuestionnaire } from 'src/app/recordmanagement/models/questionnaire.model';
-import { RecordDeletionRequest } from 'src/app/recordmanagement/models/record_deletion_request.model';
-import { RecordDocument } from 'src/app/recordmanagement/models/record_document.model';
-import { RecordPermissionRequest } from 'src/app/recordmanagement/models/record_permission.model';
-import { Tag } from 'src/app/recordmanagement/models/tag.model';
+import { Message } from 'src/app/records/models/message.model';
+import { Questionnaire, RecordQuestionnaire } from 'src/app/records/models/questionnaire.model';
+import { RecordDeletionRequest } from 'src/app/records/models/record_deletion_request.model';
+import { RecordDocument } from 'src/app/records/models/record_document.model';
+import { RecordPermissionRequest } from 'src/app/records/models/record_permission.model';
+import { Tag } from 'src/app/records/models/tag.model';
 
 // types
 export interface DjangoError {

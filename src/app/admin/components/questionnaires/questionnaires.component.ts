@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Questionnaire } from 'src/app/recordmanagement/models/questionnaire.model';
+import { Questionnaire } from 'src/app/records/models/questionnaire.model';
 import { removeFromArray } from 'src/app/shared/services/axios';
 import { SharedSandboxService } from 'src/app/shared/services/shared-sandbox.service';
 
