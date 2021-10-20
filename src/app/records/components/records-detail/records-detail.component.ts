@@ -249,6 +249,7 @@ export class RecordComponent implements OnInit {
   documentErrors: DjangoError;
   documents: RecordDocument[];
   documentData: { file: string };
+  base: string;
 
   constructor(
     private sharedSB: SharedSandboxService,
@@ -276,6 +277,8 @@ export class RecordComponent implements OnInit {
     this.getMessages(this.id);
 
     this.getDocuments(this.id);
+
+    this.base = window.location.origin;
   }
 
   getRecordQuestionnaires(id: string | number): void {
@@ -414,5 +417,9 @@ export class RecordComponent implements OnInit {
     this.http
       .delete(`api/records/record_questionnaires/${id}/`)
       .subscribe(() => (this.recordQuestionnaires = removeFromArray(this.recordQuestionnaires, id) as RecordQuestionnaire[]));
+  }
+
+  copyLink(code: string): void {
+    void navigator.clipboard.writeText(`${this.base}/records/upload/${code}/`).then(() => this.appSB.showSuccessSnackBar('Link copied'));
   }
 }

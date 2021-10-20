@@ -12,7 +12,7 @@ export interface Questionnaire {
 export interface RecordQuestionnaire {
   id: number;
   record: number;
-  questionnaire: number;
+  questionnaire: number | Questionnaire;
   answer: string;
   answered: boolean;
   created: string;

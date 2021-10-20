@@ -1,1 +1,7 @@
-<div>detail</div>
+<div class="max-w-2xl bg-white shadow mx-auto px-6 py-5" *ngIf="questionnaire && recordQuestionnaire">
+    <h2 class="text-2xl font-bold">Questionnaire: {{ questionnaire.name }}</h2>
+    <div class="pt-10">
+        <dynamic-form [url]="'api/records/record_questionnaires/' + recordQuestionnaire.id + '/'"
+            [data]="recordQuestionnaire" button="Save" [fields]="fields"></dynamic-form>
+    </div>
+</div>

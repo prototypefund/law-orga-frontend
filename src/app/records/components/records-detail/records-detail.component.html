@@ -75,7 +75,7 @@
             <div class="flex items-baseline justify-between">
               <h3 class="text-lg font-bold">{{ item.questionnaire.name }}</h3>
               <div>
-                <button type="button" mat-button color="primary">Copy
+                <button type="button" mat-button color="primary" (click)="copyLink(item.code)">Copy
                   link</button>
                 <button type="button" mat-button color="warn"
                   (click)="deleteRecordQuestionnaire(item.id)">Delete</button>
@@ -89,14 +89,13 @@
                 Answered: {{ item.answered ? 'Yes' : 'No' }}
               </div>
               <div>
-                Link: {{ item.code }}
+                Link: {{ base }}/records/upload/{{ item.code }}
               </div>
             </div>
             <hr class="my-3 border-gray-300">
-            <div *ngIf="item.answered">
+            <p *ngIf="item.answered" class="whitespace-pre-line">
               {{ item.answer }}
-            </div>
-
+            </p>
           </li>
         </ul>
       </div>
